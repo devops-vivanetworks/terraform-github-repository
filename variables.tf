@@ -50,6 +50,16 @@ variable "allow_squash_merge" {
   description = "allow landing a PR by squashing all commits to a commit and rebase to base branch in this repository"
 }
 
+variable "squash_merge_commit_title" {
+  default     = "PR_TITLE"
+  description = "Can be PR_TITLE or COMMIT_OR_PR_TITLE for a default squash merge commit title."
+}
+
+variable "squash_merge_commit_message" {
+  default     = "COMMIT_MESSAGES"
+  description = "Can be PR_BODY, COMMIT_MESSAGES, or BLANK for a default squash merge commit message."
+}
+
 variable "delete_branch_on_merge" {
   default     = false
   description = "Automatically delete head branch after a pull request is merged. Defaults to false"
@@ -115,6 +125,11 @@ variable "status_checks_contexts" {
 variable "require_conversation_resolution" {
   default     = false
   description = "Boolean, setting this to true requires all conversations on code must be resolved before a pull request can be merged."
+}
+
+variable "require_signed_commits" {
+  default     = false
+  description = "Boolean, setting this to true requires all commits to be signed with GPG."
 }
 
 # Optional inputs, for setting initial commit in the new repository
